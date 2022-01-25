@@ -87,6 +87,8 @@ export default {
   .wrapper {
     width: 75%;
     margin: 0 auto;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
     .shortener-container {
       max-height: 10rem;
       max-width: 75%;
@@ -142,9 +144,24 @@ export default {
       padding-top: 8rem;
       .text {
         margin-top: 8rem;
+        display: grid;
+        place-items: center;
         text-align: center;
+        h1 {
+          margin: 0;
+        }
         p {
-          width: 60%;
+          width: 50%;
+          color: $grayishViolet;
+        }
+      }
+      .box-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        .box-content {
+          display: flex;
+          flex-direction: column;
         }
       }
     }

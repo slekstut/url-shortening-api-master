@@ -27,10 +27,10 @@ export default {
 header {
   display: flex;
   width: 75%;
-  height: 100vh;
   margin: 0 auto;
   justify-content: space-between;
   margin-top: 5rem;
+  margin-bottom: 20rem;
   position: relative;
   .main-text {
     width: 60%;

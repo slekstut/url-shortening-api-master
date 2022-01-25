@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="wrapper">
+  <div class="shortener-container">
+    <div class="shortener-wrapper">
       <div class="input-link">
         <input type="text" placeholder="Shorten a link here..." />
         <ShortenBtn class="active-btn">Shorten it!</ShortenBtn>
@@ -23,7 +23,7 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/scss/_variables.scss";
 
-.container {
+.shortener-container {
   width: 75%;
   max-height: 10rem;
   background-image: url("../assets/images/bg-shorten-desktop.svg");
@@ -37,7 +37,7 @@ export default {
   justify-content: center;
   align-items: center;
   z-index: 0;
-  .wrapper {
+  .shortener-wrapper {
     padding: 3rem;
     width: 100%;
     .error-msg {

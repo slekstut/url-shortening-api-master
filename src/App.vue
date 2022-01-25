@@ -2,7 +2,6 @@
   <div>
     <Navbar />
     <Home />
-    <Shortener />
     <About/>
   </div>
 </template>
@@ -10,7 +9,6 @@
 <script>
 import Navbar from "./components/Navbar.vue";
 import Home from "./views/Home.vue";
-import Shortener from "./views/Shortener.vue";
 import About from "./views/About.vue";
 
 export default {
@@ -18,7 +16,6 @@ export default {
   components: {
     Navbar,
     Home,
-    Shortener,
     About,
   },
 };
@@ -53,5 +50,6 @@ body {
   margin: 0 auto;
   height: 100%;
   overflow-x: hidden;
+  max-width: 1440px;
 }
 </style>

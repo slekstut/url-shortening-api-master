@@ -10,8 +10,8 @@
     </div>
 
     <div class="auth-btns">
-      <button>Login</button>
-      <button>Sign Up</button>
+      <LoginBtn :class="{ 'active-btn': isActive === 1 }" @click="isActive=1">Login</LoginBtn>
+      <SignupBtn :class="{ 'active-btn': isActive === 2 }" @click="isActive=2">Sign Up</SignupBtn>
     </div>
     <div class="menu-icon">
       <span class="line"></span>
@@ -22,7 +22,16 @@
 </template>
 
 <script>
-export default {};
+import LoginBtn from "../components/BasicBtn.vue";
+import SignupBtn from "../components/BasicBtn.vue";
+export default {
+  components: { LoginBtn, SignupBtn },
+  data() {
+    return {
+      isActive: 2,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -33,6 +42,9 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 1rem 0;
+  width: 75%;
+  margin: 0 auto;
   .nav-left {
     display: flex;
     .logo {
@@ -49,30 +61,19 @@ nav {
         color: $grayishViolet;
         font-weight: 700;
         text-transform: capitalize;
+        transition: all 0.4s ease-in-out;
         &:hover {
           color: $veryDarkViolet;
           cursor: pointer;
+          transition: transform 0.4s ease-in-out;
         }
       }
     }
   }
   .auth-btns {
     display: flex;
-
-    button {
-      background: none;
-      font-size: 1.1rem;
-      padding: 1rem 2rem;
-      color: $grayishViolet;
-      font-weight: 700;
-      border: none;
-      text-transform: capitalize;
-      &:hover {
-        color: $white;
-        background-color: $cyan;
-        border-radius: 3rem;
-        cursor: pointer;
-      }
+    button:first-child {
+        margin-right: .5rem;
     }
   }
   .menu-icon {

@@ -3,6 +3,7 @@
     <Navbar />
     <Home />
     <About/>
+    <Boost/>
   </div>
 </template>
 
@@ -10,6 +11,7 @@
 import Navbar from "./components/Navbar.vue";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
+import Boost from "./views/Boost.vue";
 
 export default {
   name: "App",
@@ -17,6 +19,7 @@ export default {
     Navbar,
     Home,
     About,
+    Boost
   },
 };
 </script>
@@ -27,6 +30,9 @@ export default {
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  max-width: 1440px;
+  margin: 0 auto;
+
 }
 *,
 *:before,
@@ -47,9 +53,7 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0 auto;
   height: 100%;
   overflow-x: hidden;
-  max-width: 1440px;
 }
 </style>

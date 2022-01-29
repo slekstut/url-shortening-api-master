@@ -87,11 +87,10 @@ export default {
   .wrapper {
     width: 75%;
     margin: 0 auto;
-    margin-bottom: 2rem;
     padding-bottom: 2rem;
     .shortener-container {
       max-height: 10rem;
-      max-width: 75%;
+      max-width: 67.5rem;
       background-image: url("../assets/images/bg-shorten-desktop.svg");
       background-repeat: no-repeat;
       background-position: cover;
@@ -141,7 +140,7 @@ export default {
       }
     }
     .about-section {
-      padding-top: 8rem;
+      padding-top: 4rem;
       .text {
         margin-top: 8rem;
         display: grid;
@@ -158,10 +157,66 @@ export default {
       .box-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        grid-column-gap: 2rem;
+        grid-row-gap: 0;
+        margin: 8rem 0;
+        position: relative;
         .box-content {
           display: flex;
           flex-direction: column;
+          max-width: 26rem;
+          background-color: $white;
+          padding: 3rem;
+          border-radius: 0.7rem;
+          position: relative;
+          z-index: 2;
+          &__icon {
+            background-color: $darkViolet;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 50%;
+            margin: 0.2rem;
+            position: absolute;
+            top: -35%;
+            left: 12%;
+            transform: translate(-12%, 35%);
+            img {
+              padding: 1.8rem;
+              display: block;
+              width: 100%;
+              height: auto;
+            }
+          }
+          &__title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: capitalize;
+            margin: 2rem 0 1rem 0;
+            text-align: left;
+          }
+          &__text {
+            color: $gray;
+            font-size: 0.9rem;
+            line-height: 1.5;
+          }
+        }
+        .box-content:nth-child(2) {
+          transform: translateY(2.5rem);
+        }
+        .box-content:nth-child(3) {
+          transform: translateY(5rem);
+        }
+        &:after {
+          position: absolute;
+          top: 58%;
+          content: " ";
+          z-index: 0;
+          width: 60rem;
+          height: 8px;
+          background-color: $cyan;
         }
       }
     }

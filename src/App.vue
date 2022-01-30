@@ -4,6 +4,7 @@
     <Home />
     <About/>
     <Boost/>
+    <Footer/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import Navbar from "./components/Navbar.vue";
 import Home from "./views/Home.vue";
 import About from "./views/About.vue";
 import Boost from "./views/Boost.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
@@ -19,7 +21,8 @@ export default {
     Navbar,
     Home,
     About,
-    Boost
+    Boost,
+    Footer
   },
 };
 </script>

@@ -12,6 +12,24 @@
           </div>
         </div>
       </div>
+      <div class="shortened-url">
+        <div class="shortened-url__inner">
+          <a href="#" target="_blank">https://sarunasdev.com</a>
+          <div>
+            <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
+            <CopyBtn class="active-btn">Copy</CopyBtn>
+          </div>
+        </div>
+      </div>
+      <div class="shortened-url">
+        <div class="shortened-url__inner">
+          <a href="#" target="_blank">https://sarunasdev.com</a>
+          <div>
+            <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
+            <CopyBtn class="active-btn">Copy</CopyBtn>
+          </div>
+        </div>
+      </div>
       <div class="about-section">
         <div class="text">
           <h1>Advanced Statistics</h1>
@@ -70,10 +88,11 @@
 
 <script>
 import ShortenBtn from "../components/BasicBtn.vue";
+import CopyBtn from "../components/BasicBtn.vue";
 
 export default {
   name: "About",
-  components: { ShortenBtn },
+  components: { ShortenBtn, CopyBtn },
 };
 </script>
 
@@ -132,6 +151,37 @@ export default {
             &:focus {
               outline: none;
             }
+          }
+          button {
+            border-radius: 0.6rem;
+          }
+        }
+      }
+    }
+    .shortened-url {
+      transform: translateY(6rem);
+      background-color: $white;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      &__inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        a {
+          color: $veryDarkBlue;
+          text-decoration: none;
+        }
+        div {
+          display: flex;
+          flex-direction: row;
+          gap: 2rem;
+          justify-content: space-between;
+          align-items: center;
+          a {
+            color: $cyan;
+            text-decoration: none;
           }
           button {
             border-radius: 0.6rem;

@@ -4,29 +4,28 @@
       <div class="shortener-container">
         <div class="shortener-wrapper">
           <div class="input-link">
-            <input type="text" placeholder="Shorten a link here..." />
-            <ShortenBtn class="active-btn">Shorten it!</ShortenBtn>
+            <input
+              type="text"
+              placeholder="Shorten a link here..."
+              v-model="urlValue"
+            />
+            <ShortenBtn class="active-btn" @click="shortenUrl"
+              >Shorten it!</ShortenBtn
+            >
           </div>
           <div class="error-msg">
             <p>Please add a link</p>
           </div>
         </div>
       </div>
-      <div class="shortened-url">
-        <div class="shortened-url__inner">
-          <a href="#" target="_blank">https://sarunasdev.com</a>
-          <div>
-            <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-            <CopyBtn class="active-btn">Copy</CopyBtn>
-          </div>
-        </div>
-      </div>
-      <div class="shortened-url">
-        <div class="shortened-url__inner">
-          <a href="#" target="_blank">https://sarunasdev.com</a>
-          <div>
-            <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-            <CopyBtn class="active-btn">Copy</CopyBtn>
+      <div v-for="(url, index) in urlList" :key="index">
+        <div class="shortened-url">
+          <div class="shortened-url__inner">
+            <a href="#" target="_blank">{{ url }}</a>
+            <div>
+              <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
+              <CopyBtn class="active-btn">Copy</CopyBtn>
+            </div>
           </div>
         </div>
       </div>
@@ -93,6 +92,18 @@ import CopyBtn from "../components/BasicBtn.vue";
 export default {
   name: "About",
   components: { ShortenBtn, CopyBtn },
+  data() {
+    return {
+      urlValue: "",
+      urlList: [],
+    };
+  },
+  methods: {
+    shortenUrl() {
+      this.urlList.push(this.urlValue);
+      this.urlValue = '';
+    },
+  },
 };
 </script>
 

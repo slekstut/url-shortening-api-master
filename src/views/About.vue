@@ -13,9 +13,9 @@
               >Shorten it!</ShortenBtn
             >
           </div>
-          <div class="error-msg">
-            <p>Please add a link</p>
-          </div>
+        </div>
+        <div class="error-msg" v-if="error">
+          <p>Please add a link</p>
         </div>
       </div>
       <div v-for="(url, index) in urlList" :key="index">
@@ -96,12 +96,16 @@ export default {
     return {
       urlValue: "",
       urlList: [],
+      error: false,
     };
   },
   methods: {
     shortenUrl() {
+      if (!this.urlValue) {
+        return (this.error = true);
+      }
       this.urlList.push(this.urlValue);
-      this.urlValue = '';
+      this.urlValue = "";
     },
   },
 };
@@ -119,7 +123,7 @@ export default {
     margin: 0 auto;
     padding-bottom: 2rem;
     .shortener-container {
-      max-height: 10rem;
+      max-height: 15rem;
       max-width: 67.5rem;
       background-image: url("../assets/images/bg-shorten-desktop.svg");
       background-repeat: no-repeat;
@@ -129,6 +133,7 @@ export default {
       margin-bottom: 2rem;
       border-radius: 0.6rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       z-index: 0;
@@ -136,12 +141,21 @@ export default {
       top: -10%;
       left: 0;
       right: 0;
+      .error-msg {
+        margin: 0;
+        padding: 0;
+        color: red;
+        position: absolute;
+        left: 5%;
+        bottom: 0;
+        transform: translate(-5%, 0);
+        text-align: left;
+        font-style: italic;
+      }
       .shortener-wrapper {
         padding: 3rem;
         width: 100%;
-        .error-msg {
-          display: none;
-        }
+
         .input-link {
           display: flex;
           flex-wrap: nowrap;

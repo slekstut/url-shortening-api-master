@@ -27,7 +27,7 @@
               <a href="#" target="_blank">{{ url }}</a>
               <div>
                 <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-                <CopyBtn class="active-btn"
+                <CopyBtn class="active-btn" @click="copyToMemory"
                   ><span v-if="!copiedClipboard">Copy</span
                   ><span v-if="copiedClipboard">Copy</span></CopyBtn
                 >
@@ -115,7 +115,7 @@ export default {
       }
       this.urlList.push(this.urlValue);
       this.urlValue = "";
-      const myToken = "a033d8068da02aeb280be71753c820944d618e2c";
+      const myToken = process.env.BITLY_TOKEN;
       const headers = {
         Authorization: `Bearer ${myToken}`,
         "Content-Type": "application/json",
@@ -146,6 +146,10 @@ export default {
     clearError() {
       this.error = false;
     },
+    copyToMemory() {
+      this.copiedClipboard = true;
+
+    }
   },
 };
 </script>

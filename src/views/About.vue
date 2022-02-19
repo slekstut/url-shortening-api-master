@@ -8,6 +8,8 @@
               type="text"
               placeholder="Shorten a link here..."
               v-model="urlValue"
+              @input="clearError()"
+              :class="{ 'error-inut': error }"
             />
             <ShortenBtn class="active-btn" @click="shortenUrl"
               >Shorten it!</ShortenBtn
@@ -25,7 +27,10 @@
               <a href="#" target="_blank">{{ url }}</a>
               <div>
                 <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-                <CopyBtn class="active-btn">Copy</CopyBtn>
+                <CopyBtn class="active-btn"
+                  ><span v-if="!copiedClipboard">Copy</span
+                  ><span v-if="copiedClipboard">Copy</span></CopyBtn
+                >
               </div>
             </div>
           </div>
@@ -100,6 +105,7 @@ export default {
       urlValue: "",
       urlList: [],
       error: false,
+      copiedClipboard: false,
     };
   },
   methods: {
@@ -111,11 +117,14 @@ export default {
       this.urlValue = "";
       const myToken = "a033d8068da02aeb280be71753c820944d618e2c";
       const headers = {
-        'Authorization': `Bearer ${myToken}`,
+        Authorization: `Bearer ${myToken}`,
         "Content-Type": "application/json",
       };
-      const dataString =
-        JSON.stringify({ "long_url": "https://dev.bitly.com", "domain": "bit.ly", "group_guid": "Bm26fClK8ks" });
+      const dataString = JSON.stringify({
+        long_url: "https://dev.bitly.com",
+        domain: "bit.ly",
+        group_guid: "Bm26fClK8ks",
+      });
       axios
         .post("https://api-ssl.bitly.com/v4/shorten", {
           headers: headers,
@@ -133,6 +142,9 @@ export default {
           console.log(headers);
           console.log(dataString);
         });
+    },
+    clearError() {
+      this.error = false;
     },
   },
 };
@@ -171,15 +183,14 @@ export default {
         color: red;
         position: absolute;
         left: 5%;
-        bottom: 0;
-        transform: translate(-5%, 0);
+        bottom: -2%;
+        transform: translate(-5%, 2%);
         text-align: left;
         font-style: italic;
       }
       .shortener-wrapper {
         padding: 3rem;
         width: 100%;
-
         .input-link {
           display: flex;
           flex-wrap: nowrap;
@@ -319,5 +330,9 @@ export default {
       }
     }
   }
+}
+
+.error-inut {
+  border: red 2px solid !important;
 }
 </style>

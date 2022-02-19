@@ -59,7 +59,7 @@ export default {};
     .footer-column {
       display: flex;
       flex-direction: column;
-      justify-content: start;
+      justify-content: flex-start;
       gap: 1rem;
       h3 {
         margin: 0;
@@ -77,7 +77,7 @@ export default {};
         color: $grayishViolet;
       }
       &:nth-child(1) {
-        justify-content: start;
+        justify-content: flex-start;
         width: 25%;
       }
       &:last-child {
@@ -88,7 +88,7 @@ export default {};
       display: flex;
       flex-direction: row;
       gap: 2rem;
-      justify-content: end;
+      justify-content: flex-end;
     }
   }
 }

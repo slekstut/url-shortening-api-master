@@ -18,13 +18,15 @@
           <p>Please add a link</p>
         </div>
       </div>
-      <div v-for="(url, index) in urlList" :key="index">
-        <div class="shortened-url">
-          <div class="shortened-url__inner">
-            <a href="#" target="_blank">{{ url }}</a>
-            <div>
-              <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-              <CopyBtn class="active-btn">Copy</CopyBtn>
+      <div v-if="urlList.length > 0">
+        <div v-for="(url, index) in urlList" :key="index">
+          <div class="shortened-url">
+            <div class="shortened-url__inner">
+              <a href="#" target="_blank">{{ url }}</a>
+              <div>
+                <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
+                <CopyBtn class="active-btn">Copy</CopyBtn>
+              </div>
             </div>
           </div>
         </div>
@@ -86,6 +88,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import ShortenBtn from "../components/BasicBtn.vue";
 import CopyBtn from "../components/BasicBtn.vue";
 
@@ -106,6 +109,30 @@ export default {
       }
       this.urlList.push(this.urlValue);
       this.urlValue = "";
+      const myToken = "a033d8068da02aeb280be71753c820944d618e2c";
+      const headers = {
+        'Authorization': `Bearer ${myToken}`,
+        "Content-Type": "application/json",
+      };
+      const dataString =
+        JSON.stringify({ "long_url": "https://dev.bitly.com", "domain": "bit.ly", "group_guid": "Bm26fClK8ks" });
+      axios
+        .post("https://api-ssl.bitly.com/v4/shorten", {
+          headers: headers,
+          body: dataString,
+        })
+        .then(function (response) {
+          if (response.status == 200) {
+            console.log(response);
+          } else {
+            console.log("Opps dude, status code != 200 :( ");
+          }
+        })
+        .catch(function (error) {
+          console.log("Error! " + error);
+          console.log(headers);
+          console.log(dataString);
+        });
     },
   },
 };
@@ -136,11 +163,8 @@ export default {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      transform: translateY(-4.5rem);
       z-index: 0;
-      position: absolute;
-      top: -10%;
-      left: 0;
-      right: 0;
       .error-msg {
         margin: 0;
         padding: 0;

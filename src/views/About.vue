@@ -208,7 +208,6 @@ export default {
       }
     }
     .shortened-url {
-      transform: translateY(6rem);
       background-color: $white;
       border-radius: 1rem;
       margin-bottom: 1rem;

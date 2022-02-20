@@ -20,16 +20,22 @@
           <p>Please add a link</p>
         </div>
       </div>
-      <div v-if="urlList.length > 0">
-        <div v-for="(url, index) in urlList" :key="index">
+      <div class="url-list" v-if="urlList.length > 0">
+        <div
+          v-for="(url, index) in urlList"
+          :key="index"
+          @click="copiedClipboard = !copiedClipboard"
+        >
           <div class="shortened-url">
             <div class="shortened-url__inner">
-              <a href="#" target="_blank">{{ url }}</a>
+              <a href="{{ url.longUrl }}" target="_blank">{{ url.longUrl }}</a>
               <div>
-                <a href="#" target="_blank">https://bitly.fdfdsafdsd</a>
-                <CopyBtn class="active-btn" @click="copyToMemory"
-                  ><span v-if="!copiedClipboard">Copy</span
-                  ><span v-if="copiedClipboard">Copy</span></CopyBtn
+                <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a>
+                <CopyBtn
+                  class="active-btn"
+                  @click="url.copyClip = !url.copyClip"
+                  ><span v-if="!url.copyClip">Copy</span
+                  ><span v-if="url.copyClip">Copied!</span></CopyBtn
                 >
               </div>
             </div>
@@ -113,43 +119,34 @@ export default {
       if (!this.urlValue) {
         return (this.error = true);
       }
-      this.urlList.push(this.urlValue);
-      this.urlValue = "";
-      const myToken = process.env.BITLY_TOKEN;
-      const headers = {
-        Authorization: `Bearer ${myToken}`,
-        "Content-Type": "application/json",
-      };
-      const dataString = JSON.stringify({
-        long_url: "https://dev.bitly.com",
-        domain: "bit.ly",
-        group_guid: "Bm26fClK8ks",
-      });
+      const vm = this;
       axios
-        .post("https://api-ssl.bitly.com/v4/shorten", {
-          headers: headers,
-          body: dataString,
-        })
+        .post(
+          `https://api.shrtco.de/v2/shorten?url=${this.urlValue}/very/long/link.html`
+        )
         .then(function (response) {
-          if (response.status == 200) {
+          if (response.status == 200 || response.status == 201) {
+            console.log("response is: ");
             console.log(response);
+            console.log(response.data.result.full_short_link2);
+            const generatedShortUrl = response.data.result.full_short_link2;
+            vm.urlList.push({
+              longUrl: vm.urlValue,
+              shortUrl: generatedShortUrl,
+              copyClip: false,
+            });
+            vm.urlValue = "";
           } else {
             console.log("Opps dude, status code != 200 :( ");
           }
         })
         .catch(function (error) {
           console.log("Error! " + error);
-          console.log(headers);
-          console.log(dataString);
         });
     },
     clearError() {
       this.error = false;
     },
-    copyToMemory() {
-      this.copiedClipboard = true;
-
-    }
   },
 };
 </script>
@@ -173,7 +170,6 @@ export default {
       background-position: cover;
       background-color: $veryDarkViolet;
       margin: 0 auto;
-      margin-bottom: 2rem;
       border-radius: 0.6rem;
       display: flex;
       flex-direction: column;
@@ -222,36 +218,40 @@ export default {
         }
       }
     }
-    .shortened-url {
-      background-color: $white;
-      border-radius: 1rem;
-      margin-bottom: 1rem;
-      &__inner {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.5rem;
-        a {
-          color: $veryDarkBlue;
-          text-decoration: none;
-        }
-        div {
+    .url-list {
+      margin-top: -2.5rem;
+      .shortened-url {
+        background-color: $white;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        &__inner {
           display: flex;
           flex-direction: row;
-          gap: 2rem;
           justify-content: space-between;
           align-items: center;
+          padding: 1.5rem;
           a {
-            color: $cyan;
+            color: $veryDarkBlue;
             text-decoration: none;
           }
-          button {
-            border-radius: 0.6rem;
+          div {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: center;
+            a {
+              color: $cyan;
+              text-decoration: none;
+            }
+            button {
+              border-radius: 0.6rem;
+            }
           }
         }
       }
     }
+
     .about-section {
       padding-top: 4rem;
       .text {

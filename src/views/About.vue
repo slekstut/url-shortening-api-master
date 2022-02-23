@@ -32,11 +32,9 @@
               <a href="{{ url.longUrl }}" target="_blank">{{ url.longUrl }}</a>
               <div>
                 <a
-                  :href="`url.shortUrl`"
+                  href="{{url.shortUrl}}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  ref="link"
-                  id="myLink"
                   >{{ url.shortUrl }}</a
                 >
                 <div @click="copyURL(index)">
@@ -117,7 +115,7 @@ export default {
   data() {
     return {
       urlValue: "",
-      urlList: [],
+      urlList: JSON.parse(localStorage.urlArray || '[]'),
       error: false,
       copiedClipboard: false,
     };
@@ -134,9 +132,6 @@ export default {
         )
         .then(function (response) {
           if (response.status == 200 || response.status == 201) {
-            console.log("response is: ");
-            console.log(response);
-            console.log(response.data.result.short_link);
             const generatedShortUrl = response.data.result.short_link;
             vm.urlList.push({
               longUrl: vm.urlValue,
@@ -144,7 +139,9 @@ export default {
               copyClip: false,
             });
             vm.urlValue = "";
-            console.log(vm.urlList);
+            localStorage.setItem('urlArray', JSON.stringify(vm.urlList));
+            let myArray = localStorage.getItem('urlArray');
+            vm.urlList = JSON.parse(myArray);
           } else {
             console.log("Opps dude, status code != 200 :( ");
           }
@@ -155,10 +152,9 @@ export default {
     },
     copyURL(index) {
       const selectedItem = this.urlList[index].shortUrl;
-      console.log('urlList index: '+this.urlList[index].shortUrl);
-      console.log('index: '+index);
       navigator.clipboard.writeText(selectedItem);
-      alert("Copied Text: " + selectedItem);
+      const myBoolean = this.urlList[index].copyClip = true;
+      console.log(myBoolean)
     },
     clearError() {
       this.error = false;

@@ -10,6 +10,7 @@
               v-model="urlValue"
               @input="clearError()"
               :class="{ 'error-inut': error }"
+              v-on:keyup.enter="shortenUrl"
             />
             <ShortenBtn class="active-btn" @click="shortenUrl"
               >Shorten it!</ShortenBtn
@@ -30,13 +31,20 @@
             <div class="shortened-url__inner">
               <a href="{{ url.longUrl }}" target="_blank">{{ url.longUrl }}</a>
               <div>
-                <a href="{{ url.shortUrl }}" target="_blank">{{ url.shortUrl }}</a>
-                <CopyBtn
-                  class="active-btn"
-                  @click="url.copyClip = !url.copyClip"
-                  ><span v-if="!url.copyClip">Copy</span
-                  ><span v-if="url.copyClip">Copied!</span></CopyBtn
+                <a
+                  :href="`url.shortUrl`"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ref="link"
+                  id="myLink"
+                  >{{ url.shortUrl }}</a
                 >
+                <div @click="copyURL(index)">
+                  <CopyBtn class="active-btn"
+                    ><span v-if="!url.copyClip">Copy</span
+                    ><span v-if="url.copyClip">Copied!</span></CopyBtn
+                  >
+                </div>
               </div>
             </div>
           </div>
@@ -128,14 +136,15 @@ export default {
           if (response.status == 200 || response.status == 201) {
             console.log("response is: ");
             console.log(response);
-            console.log(response.data.result.full_short_link2);
-            const generatedShortUrl = response.data.result.full_short_link2;
+            console.log(response.data.result.short_link);
+            const generatedShortUrl = response.data.result.short_link;
             vm.urlList.push({
               longUrl: vm.urlValue,
               shortUrl: generatedShortUrl,
               copyClip: false,
             });
             vm.urlValue = "";
+            console.log(vm.urlList);
           } else {
             console.log("Opps dude, status code != 200 :( ");
           }
@@ -143,6 +152,13 @@ export default {
         .catch(function (error) {
           console.log("Error! " + error);
         });
+    },
+    copyURL(index) {
+      const selectedItem = this.urlList[index].shortUrl;
+      console.log('urlList index: '+this.urlList[index].shortUrl);
+      console.log('index: '+index);
+      navigator.clipboard.writeText(selectedItem);
+      alert("Copied Text: " + selectedItem);
     },
     clearError() {
       this.error = false;

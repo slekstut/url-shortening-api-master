@@ -7,19 +7,21 @@
           <li>Features</li>
           <li>Pricing</li>
           <li>Resources</li>
+          <li class="user-action">
+            <LoginBtn
+              :class="{ 'active-btn': isActive === 1 }"
+              @click="isActive = 1"
+              >Login</LoginBtn
+            >
+          </li>
+          <li class="user-action">
+            <SignupBtn
+              :class="{ 'active-btn': isActive === 2 }"
+              @click="isActive = 2"
+              >Sign Up</SignupBtn
+            >
+          </li>
         </ul>
-      </div>
-      <div class="auth-btns">
-        <LoginBtn
-          :class="{ 'active-btn': isActive === 1 }"
-          @click="isActive = 1"
-          >Login</LoginBtn
-        >
-        <SignupBtn
-          :class="{ 'active-btn': isActive === 2 }"
-          @click="isActive = 2"
-          >Sign Up</SignupBtn
-        >
       </div>
     </div>
     <div class="menu-icon" @click="activeMobileMenu = !activeMobileMenu">
@@ -107,23 +109,38 @@ nav {
         top: 4rem;
         left: 50%;
         transform: translate(-50%);
-        right: 1rem;
         width: 100%;
-        min-height: 50vh;
+        min-height: 25rem;
         height: 100%;
         z-index: 100;
-        border-radius: .7rem;
-          li {
+        border-radius: 0.7rem;
+        li {
+          color: $white;
+          margin-bottom: 2rem;
+        }
+        li:nth-child(4) {
+          border-top: 1px solid $gray;
+          width: 90%;
+          button {
+            margin-top: 2rem;
+            margin-right: auto;
+            margin-left: auto;
+          }
+        }
+        .user-action {
+          button {
             color: $white;
             margin-bottom: 2rem;
-            &:last-child {
-              border-bottom: 1px solid $grayishViolet;
-            }
+            margin: 0;
           }
+          .active-btn {
+            width: 100%;
+          }
+        }
       }
     }
     .auth-btns {
-      display: none;
+      display: flex;
     }
     .menu-icon {
       display: flex;

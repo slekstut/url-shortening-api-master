@@ -2,8 +2,8 @@
   <nav>
     <div class="nav-left">
       <div class="logo"><img src="../assets/images/logo.svg" alt="" /></div>
-      <div :class="{ 'active-mobile-menu': activeMobileMenu }">
-        <ul>
+      <div>
+        <ul :class="{ 'active-mobile-menu': activeMobileMenu }">
           <li>Features</li>
           <li>Pricing</li>
           <li>Resources</li>
@@ -98,6 +98,9 @@ nav {
     width: 90%;
     .nav-left {
       ul {
+        display: none;
+      }
+      .active-mobile-menu {
         display: flex;
         flex-direction: column;
         justify-content: center;

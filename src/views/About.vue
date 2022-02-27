@@ -128,7 +128,7 @@ export default {
       const vm = this;
       axios
         .post(
-          `https://api.shrtco.de/v2/shorten?url=${this.urlValue}/very/long/link.html`
+          `https://api.shrtco.de/v2/shorten?url=${this.urlValue}`
         )
         .then(function (response) {
           if (response.status == 200 || response.status == 201) {

@@ -118,6 +118,11 @@ nav {
           color: $white;
           margin-bottom: 2rem;
         }
+        li.user-action {
+          width: 90%;
+          display: flex;
+          justify-content: center;
+        }
         li:nth-child(4) {
           border-top: 1px solid $gray;
           width: 90%;

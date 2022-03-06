@@ -1,8 +1,7 @@
 <template>
   <nav>
     <div class="nav-left">
-      <div class="logo"><img src="../assets/images/logo.svg" alt="" /></div>
-      <div>
+        <div class="logo"><img src="../assets/images/logo.svg" alt="" /></div>
         <ul :class="{ 'active-mobile-menu': activeMobileMenu }">
           <li>Features</li>
           <li>Pricing</li>
@@ -22,7 +21,6 @@
             >
           </li>
         </ul>
-      </div>
     </div>
     <div class="menu-icon" @click="activeMobileMenu = !activeMobileMenu">
       <span class="line"></span>
@@ -53,23 +51,28 @@ nav {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1rem 0;
   width: 75%;
   margin: 0 auto;
   .nav-left {
+    width: 100%;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
     .logo {
+      width: 15%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
     ul {
+      width: 85%;
       display: flex;
+      align-items: center;
       list-style: none;
       li {
+        margin-right: 1.5rem;
         font-size: 1.1rem;
-        margin-right: 2rem;
         color: $grayishViolet;
         font-weight: 700;
         text-transform: capitalize;
@@ -80,12 +83,6 @@ nav {
           transition: transform 0.4s ease-in-out;
         }
       }
-    }
-  }
-  .auth-btns {
-    display: flex;
-    button:first-child {
-      margin-right: 0.5rem;
     }
   }
   .menu-icon {
@@ -146,9 +143,6 @@ nav {
           }
         }
       }
-    }
-    .auth-btns {
-      display: flex;
     }
     .menu-icon {
       display: flex;

@@ -98,8 +98,8 @@ header {
   }
 }
 
-@media only screen and (max-width: 415px) {
-   header {
+@media only screen and (max-width: 768px) {
+  header {
     .main-text {
       margin-top: 2rem;
       h1 {
@@ -109,6 +109,31 @@ header {
       p {
         width: 85%;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  header {
+    img {
+      max-width: 60%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  header {
+   .main-text {
+      h1 {
+        font-size: 3rem;
+        line-height: 1;
+      }
+      p, .active-btn {
+        font-size: 1rem;
+      }
+    }
+    img {
+      max-width: 70%;
     }
   }
 }

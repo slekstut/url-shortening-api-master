@@ -350,7 +350,7 @@ export default {
   border: red 2px solid !important;
 }
 
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 768px) {
   .container {
     .wrapper {
       width: 100%;
@@ -363,6 +363,12 @@ export default {
             input {
               padding: 1rem;
             }
+            input::placeholder {
+              font-size: .8rem;
+            }
+            .active-btn {
+              font-size: .8rem;
+            }
           }
         }
       }
@@ -374,6 +380,7 @@ export default {
           div {
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             div {
               display: flex;

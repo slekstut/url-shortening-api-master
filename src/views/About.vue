@@ -388,11 +388,17 @@ export default {
           margin-top: 0;
           h1 {
             font-size: 1.8rem;
+            margin-top: 2rem;
           }
           p {
             font-size: 1rem;
             width: 90%;
           }
+        }
+        .box-container {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+          padding: 0 1rem;
         }
       }
     }

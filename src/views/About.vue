@@ -398,7 +398,20 @@ export default {
         .box-container {
           grid-template-columns: 1fr;
           grid-template-rows: auto;
+          gap: 5rem;
           padding: 0 1rem;
+          &::after {
+            top: 0;
+            left: 51%;
+            transform: translate(-51%, 0);
+            width: 8px;
+            height: 60rem;
+          }
+          .box-content__icon {
+            top: -35%;
+            left: 50%;
+            transform: translate(-50%, 35%);
+          }
         }
       }
     }

@@ -81,7 +81,7 @@ export default {};
         width: 25%;
       }
       &:last-child {
-          width: 25%;
+        width: 25%;
       }
     }
     .socials {
@@ -89,6 +89,29 @@ export default {};
       flex-direction: row;
       gap: 2rem;
       justify-content: flex-end;
+    }
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .footer {
+    .footer-wrapper {
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+      text-align: center;
+      .footer-column:first-child {
+        width: 100%;
+        justify-content: center;
+      }
+      .footer-column {
+        width: 100%;
+      }
+      .socials {
+        width: 100%;
+        justify-content: center;
+      }
     }
   }
 }

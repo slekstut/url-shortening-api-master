@@ -34,4 +34,14 @@ export default {
     place-items: center;
   }
 }
+
+@media only screen and (max-width: 415px) {
+  .boost-wrapper {
+    .boost-text {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
 </style>

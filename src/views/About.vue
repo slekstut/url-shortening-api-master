@@ -351,4 +351,11 @@ export default {
 .error-inut {
   border: red 2px solid !important;
 }
+
+@media only screen and (max-width: 415px) {
+  .container .wrapper .shortener-container .shortener-wrapper .input-link {
+    flex-direction: column;
+  }
+  
+}
 </style>

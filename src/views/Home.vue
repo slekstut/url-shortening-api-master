@@ -64,9 +64,14 @@ header {
   header {
     width: 95%;
     margin-top: 0;
+    margin-bottom: 10rem;
     flex-direction: column;
     .main-text {
-      widows: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       order: 2;
       h1 {
         width: 100%;
@@ -75,6 +80,11 @@ header {
         text-align: center;
         letter-spacing: 0;
         line-height: 1.5;
+      }
+      p {
+        max-width: 100%;
+        font-size: 1rem;
+        text-align: center;
       }
     }
     img {
@@ -86,5 +96,9 @@ header {
       transform: translate(5%, 0%);
     }
   }
+}
+
+@media only screen and (max-width: 415px) {
+  
 }
 </style>

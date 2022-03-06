@@ -99,6 +99,17 @@ header {
 }
 
 @media only screen and (max-width: 415px) {
-  
+   header {
+    .main-text {
+      margin-top: 2rem;
+      h1 {
+        font-size: 2rem;
+        line-height: 1;
+      }
+      p {
+        width: 85%;
+      }
+    }
+  }
 }
 </style>

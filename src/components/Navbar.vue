@@ -162,7 +162,8 @@ nav {
       .line {
         display: block;
         width: 100%;
-        height: 4px;
+        height: 3px;
+        border-radius: 5px;
         background: $grayishViolet;
       }
     }

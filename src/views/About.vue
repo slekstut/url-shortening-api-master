@@ -115,7 +115,7 @@ export default {
   data() {
     return {
       urlValue: "",
-      urlList: JSON.parse(localStorage.urlArray || '[]'),
+      urlList: JSON.parse(localStorage.urlArray || "[]"),
       error: false,
       copiedClipboard: false,
     };
@@ -127,9 +127,7 @@ export default {
       }
       const vm = this;
       axios
-        .post(
-          `https://api.shrtco.de/v2/shorten?url=${this.urlValue}`
-        )
+        .post(`https://api.shrtco.de/v2/shorten?url=${this.urlValue}`)
         .then(function (response) {
           if (response.status == 200 || response.status == 201) {
             const generatedShortUrl = response.data.result.short_link;
@@ -139,8 +137,8 @@ export default {
               copyClip: false,
             });
             vm.urlValue = "";
-            localStorage.setItem('urlArray', JSON.stringify(vm.urlList));
-            let myArray = localStorage.getItem('urlArray');
+            localStorage.setItem("urlArray", JSON.stringify(vm.urlList));
+            let myArray = localStorage.getItem("urlArray");
             vm.urlList = JSON.parse(myArray);
           } else {
             console.log("Opps dude, status code != 200 :( ");
@@ -153,8 +151,8 @@ export default {
     copyURL(index) {
       const selectedItem = this.urlList[index].shortUrl;
       navigator.clipboard.writeText(selectedItem);
-      const myBoolean = this.urlList[index].copyClip = true;
-      console.log(myBoolean)
+      const myBoolean = (this.urlList[index].copyClip = true);
+      console.log(myBoolean);
     },
     clearError() {
       this.error = false;
@@ -353,9 +351,48 @@ export default {
 }
 
 @media only screen and (max-width: 415px) {
-  .container .wrapper .shortener-container .shortener-wrapper .input-link {
-    flex-direction: column;
+  .container {
+    .wrapper {
+      width: 100%;
+      .shortener-container {
+        max-width: 90%!important;
+        .shortener-wrapper {
+          padding: 1.2rem;
+          .input-link {
+            flex-direction: column;
+            input {
+              padding: 1rem;
+            }
+          }
+        }
+      }
+      .url-list {
+        .shortened-url__inner {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+          div {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        }
+      }
+      .about-section {
+        padding-top: 0;
+        .text {
+          margin-top: 0;
+          h1 {
+            font-size: 1.8rem;
+          }
+          p {
+            font-size: 1rem;
+            width: 90%;
+          }
+        }
+      }
+    }
   }
-  
 }
 </style>

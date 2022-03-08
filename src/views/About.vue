@@ -287,6 +287,7 @@ export default {
         .box-content {
           display: flex;
           flex-direction: column;
+          width: 100%;
           max-width: 26rem;
           background-color: $white;
           padding: 3rem;
@@ -403,10 +404,16 @@ export default {
           }
         }
         .box-container {
+          display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: auto;
+          justify-content: center;
+          align-items: center;
           gap: 5rem;
           padding: 0 1rem;
+          .box-content {
+            margin: 0 auto;
+          }
           &::after {
             top: 0;
             left: 51%;
@@ -418,6 +425,37 @@ export default {
             top: -35%;
             left: 50%;
             transform: translate(-50%, 35%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    .wrapper {
+      .about-section {
+        padding-top: 0;
+        .box-container {
+          .box-content {
+            padding: 1rem;
+            min-height: 16rem;
+            .box-content__icon {
+              top: -15%;
+              left: 47%;
+              transform: translate(-47%, -15%);
+          }
+          &__title {
+            margin-top: 4rem;
+          }
+          }
+          &::after {
+            top: 52%;
+            left: 51%;
+            transform: translate(-51%, -52%);
+            width: 30rem;
+            height: 8px;
           }
         }
       }

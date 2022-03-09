@@ -197,6 +197,12 @@ export default {
         transform: translate(-5%, 2%);
         text-align: left;
         font-style: italic;
+        @media (max-width: 768px) {
+          position: relative;
+          width: 100%;
+          padding-left: 1rem;
+          font-size: $font-size-md;
+        }
       }
       .shortener-wrapper {
         padding: 3rem;
@@ -361,14 +367,16 @@ export default {
           padding: 1.2rem;
           .input-link {
             flex-direction: column;
+            font-size: $font-size-md;
             input {
               padding: 1rem;
+              font-size: $font-size-md;
             }
             input::placeholder {
-              font-size: .8rem;
+              font-size: $font-size-md;
             }
             .active-btn {
-              font-size: .8rem;
+              font-size: $font-size-md;
             }
           }
         }
@@ -378,28 +386,35 @@ export default {
           flex-direction: column;
           gap: 2rem;
           align-items: center;
+          font-size: $font-size-md;
           div {
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            font-size: $font-size-md;
             div {
               display: flex;
               justify-content: flex-end;
+              button {
+              font-size: $font-size-md;
+              }
             }
           }
         }
       }
       .about-section {
         padding-top: 0;
+        font-size: $font-size-md;
         .text {
           margin-top: 0;
+          font-size: $font-size-md;
           h1 {
-            font-size: 1.8rem;
+            font-size: $fontSize;
             margin-top: 2rem;
           }
           p {
-            font-size: 1rem;
+            font-size: $font-size-md;
             width: 90%;
           }
         }
@@ -412,13 +427,14 @@ export default {
           gap: 5rem;
           padding: 0 1rem;
           .box-content {
+          font-size: $font-size-md;
             margin: 0 auto;
           }
           &::after {
             top: 0;
-            left: 51%;
-            transform: translate(-51%, 0);
-            width: 8px;
+            left: 50.5%;
+            transform: translateX(-50.5%);
+            width: 5px;
             height: 60rem;
           }
           .box-content__icon {
@@ -456,6 +472,24 @@ export default {
             transform: translate(-51%, -52%);
             width: 30rem;
             height: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 392px) {
+  .container {
+    .wrapper {
+      .about-section {
+        .box-container {
+          .box-content {
+            .box-content__icon {
+                top: -14%;
+                left: 49%;
+                transform: translate(-49%, -14%);
+          }
           }
         }
       }

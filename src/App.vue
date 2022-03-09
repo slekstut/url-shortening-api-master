@@ -53,6 +53,15 @@ body {
   color: $veryDarkViolet;
 }
 
+@media (max-width: 768px) {
+  body {
+    font-size: $font-size-md;
+  }
+  h1 {
+    font-size: $fontSize;
+  }
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

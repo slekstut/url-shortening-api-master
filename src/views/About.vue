@@ -354,7 +354,7 @@ export default {
 @media only screen and (max-width: 768px) {
   .container {
     .wrapper {
-      width: 100%;
+      width: 95%;
       .shortener-container {
         max-width: 90%!important;
         .shortener-wrapper {
@@ -376,8 +376,8 @@ export default {
       .url-list {
         .shortened-url__inner {
           flex-direction: column;
-          gap: 1rem;
-          align-items: flex-start;
+          gap: 2rem;
+          align-items: center;
           div {
             width: 100%;
             display: flex;

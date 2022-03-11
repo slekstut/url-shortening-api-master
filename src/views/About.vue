@@ -362,7 +362,7 @@ export default {
     .wrapper {
       width: 95%;
       .shortener-container {
-        max-width: 90%!important;
+        max-width: 90% !important;
         .shortener-wrapper {
           padding: 1.2rem;
           .input-link {
@@ -397,7 +397,7 @@ export default {
               display: flex;
               justify-content: flex-end;
               button {
-              font-size: $font-size-md;
+                font-size: $font-size-md;
               }
             }
           }
@@ -427,8 +427,23 @@ export default {
           gap: 5rem;
           padding: 0 1rem;
           .box-content {
-          font-size: $font-size-md;
+            font-size: $font-size-md;
             margin: 0 auto;
+            &__icon {
+              top: -35%;
+              left: 50%;
+              transform: translate(-50%, 35%);
+            }
+            &__title,
+            &__text {
+              text-align: center;
+            }
+            &__title {
+              font-size: $fontSize;
+            }
+            &__text {
+              font-size: $font-size-md;
+            }
           }
           &::after {
             top: 0;
@@ -436,11 +451,6 @@ export default {
             transform: translateX(-50.5%);
             width: 5px;
             height: 60rem;
-          }
-          .box-content__icon {
-            top: -35%;
-            left: 50%;
-            transform: translate(-50%, 35%);
           }
         }
       }
@@ -461,10 +471,10 @@ export default {
               top: -15%;
               left: 47%;
               transform: translate(-47%, -15%);
-          }
-          &__title {
-            margin-top: 4rem;
-          }
+            }
+            &__title {
+              margin-top: 4rem;
+            }
           }
           &::after {
             top: 52%;
@@ -486,10 +496,10 @@ export default {
         .box-container {
           .box-content {
             .box-content__icon {
-                top: -14%;
-                left: 49%;
-                transform: translate(-49%, -14%);
-          }
+              top: -14%;
+              left: 49%;
+              transform: translate(-49%, -14%);
+            }
           }
         }
       }

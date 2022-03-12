@@ -286,6 +286,7 @@ export default {
       .box-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+        //grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 2rem;
         grid-row-gap: 0;
         margin: 8rem 0;
@@ -294,6 +295,7 @@ export default {
           display: flex;
           flex-direction: column;
           width: 100%;
+          min-width: 205px;
           max-width: 26rem;
           background-color: $white;
           padding: 3rem;

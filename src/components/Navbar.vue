@@ -1,26 +1,28 @@
 <template>
   <nav>
     <div class="nav-left">
-        <div class="logo"><img src="../assets/images/logo.svg" alt="" /></div>
-        <ul :class="{ 'active-mobile-menu': activeMobileMenu }">
-          <li>Features</li>
-          <li>Pricing</li>
-          <li>Resources</li>
-          <li class="user-action">
-            <LoginBtn
-              :class="{ 'active-btn': isActive === 1 }"
-              @click="isActive = 1"
-              >Login</LoginBtn
-            >
-          </li>
-          <li class="user-action">
-            <SignupBtn
-              :class="{ 'active-btn': isActive === 2 }"
-              @click="isActive = 2"
-              >Sign Up</SignupBtn
-            >
-          </li>
-        </ul>
+      <div class="logo"><img src="../assets/images/logo.svg" alt="logo" /></div>
+      <ul :class="{ 'active-mobile-menu': activeMobileMenu }">
+        <li>Features</li>
+        <li>Pricing</li>
+        <li>Resources</li>
+        <li id="login" class="user-action">
+          <LoginBtn
+            :class="{ 'active-btn': isActive === 1 }"
+            @click="isActive = 1"
+          >
+            Login
+          </LoginBtn>
+        </li>
+        <li id="signup" class="user-action">
+          <SignupBtn
+            :class="{ 'active-btn': isActive === 2 }"
+            @click="isActive = 2"
+          >
+            Sign Up
+          </SignupBtn>
+        </li>
+      </ul>
     </div>
     <div class="menu-icon" @click="activeMobileMenu = !activeMobileMenu">
       <span class="line"></span>
@@ -31,21 +33,24 @@
 </template>
 
 <script>
-import LoginBtn from "../components/BasicBtn.vue";
-import SignupBtn from "../components/BasicBtn.vue";
+import LoginBtn from '../components/BasicBtn.vue'
+import SignupBtn from '../components/BasicBtn.vue'
 export default {
-  components: { LoginBtn, SignupBtn },
+  components: {
+    LoginBtn,
+    SignupBtn,
+  },
   data() {
     return {
       isActive: 2,
       activeMobileMenu: false,
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/scss/_variables.scss";
+@import '../assets/scss/_variables.scss';
 
 nav {
   position: relative;
@@ -54,20 +59,24 @@ nav {
   padding: 1rem 0;
   width: 75%;
   margin: 0 auto;
+
   .nav-left {
     width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     .logo {
       width: 15%;
       display: flex;
       align-items: center;
       justify-content: flex-start;
     }
+
     ul {
-      width: 85%;
-      display: flex;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
       align-items: center;
       list-style: none;
       li {
@@ -77,14 +86,24 @@ nav {
         font-weight: 700;
         text-transform: capitalize;
         transition: all 0.4s ease-in-out;
+
         &:hover {
           color: $veryDarkViolet;
           cursor: pointer;
           transition: transform 0.4s ease-in-out;
         }
       }
+      #login {
+        grid-column: 7 / 8;
+        margin-right: 0;
+      }
+      #signup {
+        grid-column: 8 / 9;
+        margin-right: 0;
+      }
     }
   }
+
   .menu-icon {
     display: none;
   }
@@ -99,6 +118,7 @@ nav {
       }
       .active-mobile-menu {
         display: flex;
+        gap: 2rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -110,40 +130,48 @@ nav {
         left: 50%;
         transform: translate(-50%);
         width: 100%;
+        max-width: 30rem;
         min-height: 25rem;
         height: 100%;
         z-index: 100;
         border-radius: 0.7rem;
         li {
           color: $white;
-          margin-bottom: 2rem;
+          font-size: $fontSize;
+          margin-right: 0;
         }
+
         li.user-action {
           width: 90%;
           display: flex;
           justify-content: center;
         }
+
         li:nth-child(4) {
           border-top: 1px solid $gray;
           width: 90%;
+
           button {
             margin-top: 2rem;
             margin-right: auto;
             margin-left: auto;
           }
         }
+
         .user-action {
           button {
             color: $white;
             margin-bottom: 2rem;
             margin: 0;
           }
+
           .active-btn {
             width: 100%;
           }
         }
       }
     }
+
     .menu-icon {
       display: flex;
       position: absolute;
@@ -153,12 +181,35 @@ nav {
       height: 26px;
       flex-direction: column;
       justify-content: space-between;
+
       .line {
         display: block;
         width: 100%;
         height: 3px;
         border-radius: 5px;
         background: $grayishViolet;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  nav {
+    .nav-left {
+      ul {
+        li {
+          font-size: $font-size-md;
+        }
+        #login {
+        button {
+        font-size: $font-size-md;
+        }
+      }
+      #signup {
+       button {
+        font-size: $font-size-md;
+        }
+      }
       }
     }
   }

@@ -6,7 +6,7 @@
         <li>Features</li>
         <li>Pricing</li>
         <li>Resources</li>
-        <li id="login" class="user-action">
+        <li id="login">
           <LoginBtn
             :class="{ 'active-btn': isActive === 1 }"
             @click="isActive = 1"
@@ -14,7 +14,7 @@
             Login
           </LoginBtn>
         </li>
-        <li id="signup" class="user-action">
+        <li id="signup">
           <SignupBtn
             :class="{ 'active-btn': isActive === 2 }"
             @click="isActive = 2"
@@ -109,6 +109,28 @@ nav {
   }
 }
 
+@media only screen and (max-width: 991px) {
+  nav {
+    .nav-left {
+      ul {
+        li {
+          font-size: $font-size-md;
+        }
+        #login {
+        button {
+        font-size: $font-size-md;
+        }
+      }
+      #signup {
+       button {
+        font-size: $font-size-md;
+        }
+      }
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   nav {
     width: 90%;
@@ -122,16 +144,14 @@ nav {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 2.5rem;
-        padding-bottom: 1rem;
+        padding: 3rem 1rem;
         background-color: $darkViolet;
         position: absolute;
         top: 4rem;
         left: 50%;
         transform: translate(-50%);
-        width: 100%;
-        max-width: 30rem;
-        min-height: 25rem;
+        max-width: 95%;
+        min-height: 27rem;
         height: 100%;
         z-index: 100;
         border-radius: 0.7rem;
@@ -141,32 +161,33 @@ nav {
           margin-right: 0;
         }
 
-        li.user-action {
+        #signup, #login {
           width: 90%;
           display: flex;
           justify-content: center;
+           button {
+            color: $white;
+            margin-bottom: 2rem;
+            margin: 0;
+          }
+          .active-btn {
+            width: 100%;
+          }
         }
 
-        li:nth-child(4) {
+        #login {
           border-top: 1px solid $gray;
           width: 90%;
-
           button {
+            font-size: $fontSize;
             margin-top: 2rem;
             margin-right: auto;
             margin-left: auto;
           }
         }
-
-        .user-action {
+        #signup {
           button {
-            color: $white;
-            margin-bottom: 2rem;
-            margin: 0;
-          }
-
-          .active-btn {
-            width: 100%;
+            font-size: $fontSize;
           }
         }
       }
@@ -188,28 +209,6 @@ nav {
         height: 3px;
         border-radius: 5px;
         background: $grayishViolet;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  nav {
-    .nav-left {
-      ul {
-        li {
-          font-size: $font-size-md;
-        }
-        #login {
-        button {
-        font-size: $font-size-md;
-        }
-      }
-      #signup {
-       button {
-        font-size: $font-size-md;
-        }
-      }
       }
     }
   }

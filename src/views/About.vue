@@ -38,7 +38,7 @@
                   >{{ url.shortUrl }}</a
                 >
                 <div @click="copyURL(index)">
-                  <CopyBtn class="active-btn"
+                  <CopyBtn class="active-btn" :class="{'copied': url.copyClip}"
                     ><span v-if="!url.copyClip">Copy</span
                     ><span v-if="url.copyClip">Copied!</span></CopyBtn
                   >
